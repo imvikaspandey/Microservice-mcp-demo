@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  discoveryservice:
+    build: ./discovery-service
+    ports:
+      - "8761:8761"    
+  apigateway:
+    environment: 
+      # Important for clients to register with eureka
+      - eureka.client.serviceUrl.defaultZone=http://discoveryservice:8761/eureka/
+    build: ./api-gateway
+    ports:
+      - "8080:8080"
+  carservice:
+    environment: 
+      # Important for clients to register with eureka
+      - eureka.client.serviceUrl.defaultZone=http://discoveryservice:8761/eureka/
+    build: ./car-service
+    ports:
+      - "8090:8090"

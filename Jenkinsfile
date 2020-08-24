@@ -5,8 +5,9 @@ pipeline {
 	
 		stage('Initialize')
 		{
-			def dockerHome = tool 'mydocker'			
-			env.PATH = "${dockerHome}/bin:${env.PATH}"
+			set dockerHome = tool 'mydocker'	
+			setx path "%path%;%dockerHome%/bin"
+
 		}
 		
         stage('Build Discovery Service') {

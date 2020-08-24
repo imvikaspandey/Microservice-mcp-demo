@@ -25,7 +25,7 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 echo 'Deploying application'
-                bat 'docker-compose stop && docker-compose up -d'
+                bat ' cd "spring-boot+cloud" && docker-compose stop && docker-compose up --build -d'
 				echo 'Your services will be up in few secs :-)'
             }
         }

@@ -3,13 +3,6 @@ pipeline {
 
     stages {
 	
-		stage('Initialize')
-		{
-			set dockerHome = tool 'mydocker'	
-			setx path "%path%;%dockerHome%/bin"
-
-		}
-		
         stage('Build Discovery Service') {
             steps {
                 echo 'Building Discovery Service...'
